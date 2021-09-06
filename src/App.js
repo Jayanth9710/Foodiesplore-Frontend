@@ -27,7 +27,7 @@ function App() {
   useEffect(() => {
     const getPins = async () => {
       try {
-        const allPins = await axios.get("/pins");
+        const allPins = await axios.get("https://foodiesplore.herokuapp.com/pins");
         setPins(allPins.data);
       } catch (error) {
         console.log(error);
@@ -61,7 +61,7 @@ function App() {
     };
 
     try {
-      const res = await axios.post("/pins", newPin);
+      const res = await axios.post("https://foodiesplore.herokuapp.com/pins", newPin);
       setPins([...pins, res.data]);
       setnewPlace();
     } catch (error) {
