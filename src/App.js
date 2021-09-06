@@ -80,8 +80,8 @@ function App() {
       <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
-        width="100%"
-        height="100%"
+        width="100"
+        height="100"
         transitionDuration="200"
         mapStyle="mapbox://styles/safak/cknndpyfq268f17p53nmpwira"
         onViewportChange={(viewport) => setViewport(viewport)}
