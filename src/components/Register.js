@@ -2,7 +2,7 @@ import { Cancel, Explore } from "@material-ui/icons"
 import { useRef, useState } from "react"
 import  "./register.css"
 import axios from 'axios'
-import env from "./settings";
+import env from "../settings";
 
 function Register({setShowRegister}) {
     const nameRef = useRef();
