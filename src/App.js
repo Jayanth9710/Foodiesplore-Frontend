@@ -8,6 +8,7 @@ import Register from "./components/Register";
 import Login from "./components/Login"
 import 'mapbox-gl/dist/mapbox-gl.css'
 
+
 function App() {
   const myStorage = window.localStorage;
   const [currentUser,setcurrentUser] = useState(myStorage.getItem("user"));
