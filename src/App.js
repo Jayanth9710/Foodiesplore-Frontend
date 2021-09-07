@@ -7,6 +7,10 @@ import { format } from "timeago.js";
 import Register from "./components/Register";
 import Login from "./components/Login"
 import 'mapbox-gl/dist/mapbox-gl.css'
+import mapbox from 'mapbox-gl'
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 
 function App() {
@@ -29,7 +33,7 @@ function App() {
   useEffect(() => {
     const getPins = async () => {
       try {
-        const allPins = await axios.get("https://foodiesplore.herokuapp.com/pins");
+        const allPins = await axios.get("/pins");
         setPins(allPins.data);
       } catch (error) {
         console.log(error);
@@ -63,7 +67,7 @@ function App() {
     };
 
     try {
-      const res = await axios.post("https://foodiesplore.herokuapp.com/pins", newPin);
+      const res = await axios.post("/pins", newPin);
       setPins([...pins, res.data]);
       setnewPlace();
     } catch (error) {
