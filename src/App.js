@@ -8,7 +8,7 @@ import Register from "./components/Register";
 import Login from "./components/Login"
 import 'mapbox-gl/dist/mapbox-gl.css'
 import mapbox from 'mapbox-gl'
-import Worker from "./file.worker.js";
+import Worker from "worker-loader!./Worker.js";
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
