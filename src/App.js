@@ -76,7 +76,7 @@ function App() {
   }
 
   return (
-    <div style={{ height: "95vh", width: "95%" }}>
+    <div style={{ height: "100vh", width: "100%" }}>
       <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
@@ -176,7 +176,8 @@ function App() {
             <button className="button login" onClick={()=>setShowLogin(true)}>Login</button>
             <button className="button register" onClick={()=>setShowRegister(true)}>Register</button>
           </div>
-        )};
+        )}
+
         {showRegister && <Register setShowRegister={setShowRegister} />}
         {showLogin && <Login setShowLogin={setShowLogin} myStorage={myStorage} setcurrentUser={setcurrentUser} />}
         
