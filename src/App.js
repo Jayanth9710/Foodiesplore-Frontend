@@ -8,6 +8,7 @@ import Register from "./components/Register";
 import Login from "./components/Login"
 import 'mapbox-gl/dist/mapbox-gl.css'
 import mapbox from 'mapbox-gl'
+import Worker from "./file.worker.js";
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
@@ -29,6 +30,13 @@ function App() {
     longitude: 78.9629,
     zoom: 4,
   });
+
+  const worker = new Worker();
+
+worker.postMessage({ a: 1 });
+worker.onmessage = function (event) {};
+
+worker.addEventListener("message", function (event) {});
 
   useEffect(() => {
     const getPins = async () => {
