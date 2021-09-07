@@ -16,7 +16,7 @@ function Login({ setShowLogin,myStorage,setcurrentUser }) {
       password: passwordRef.current.value,
     };
     try {
-      const res = await axios.post("/users/login", user);
+      const res = await axios.post(`${env.api}/users/login`, user);
       myStorage.setItem("user",res.data.username)
       setcurrentUser(res.data.username)
       setShowLogin(false)

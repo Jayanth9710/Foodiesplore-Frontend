@@ -87,6 +87,7 @@ function App() {
         mapStyle="mapbox://styles/safak/cknndpyfq268f17p53nmpwira"
         onViewportChange={(viewport) => setViewport(viewport)}
         onDblClick={handleAddClick}
+        
       >
         {pins.map((p) => (
           <>
@@ -182,8 +183,11 @@ function App() {
         {showRegister && <Register setShowRegister={setShowRegister} />}
         {showLogin && <Login setShowLogin={setShowLogin} myStorage={myStorage} setcurrentUser={setcurrentUser} />}
         
+        
       </ReactMapGL>
+      
     </div>
+    
   );
 }
 
