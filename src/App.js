@@ -7,6 +7,7 @@ import { format } from "timeago.js";
 import Register from "./components/Register";
 import Login from "./components/Login"
 import 'mapbox-gl/dist/mapbox-gl.css'
+import env from "./settings";
 
 function App() {
   const myStorage = window.localStorage;
@@ -28,7 +29,7 @@ function App() {
   useEffect(() => {
     const getPins = async () => {
       try {
-        const allPins = await axios.get("/pins");
+        const allPins = await axios.get(`${env.api}/pins`);
         setPins([...allPins.data]);
       } catch (error) {
         console.log(error);
@@ -62,7 +63,7 @@ function App() {
     };
 
     try {
-      const res = await axios.post("/pins", newPin);
+      const res = await axios.post(`${env.api}/pins`, newPin);
       setPins([...pins, res.data]);
       setnewPlace();
     } catch (error) {
