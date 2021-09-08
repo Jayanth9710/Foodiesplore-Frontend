@@ -6,7 +6,10 @@ import axios from "axios";
 import { format } from "timeago.js";
 import Register from "./components/Register";
 import Login from "./components/Login"
+import mapboxgl from "mapbox-gl";
 import 'mapbox-gl/dist/mapbox-gl.css'
+  // eslint-disable-next-line import/no-webpack-loader-syntax
+  mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 import env from "./settings";
 
 function App() {
@@ -26,6 +29,7 @@ function App() {
     zoom: 4,
   });
 
+
   useEffect(() => {
     const getPins = async () => {
       try {
@@ -37,6 +41,8 @@ function App() {
     };
     getPins();
   }, []);
+
+
 
   const handleMarkerClick = (id, lat, long) => {
     setcurrPlaceId(id);
