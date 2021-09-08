@@ -8,9 +8,10 @@ import Register from "./components/Register";
 import Login from "./components/Login"
 import mapboxgl from "mapbox-gl";
 import 'mapbox-gl/dist/mapbox-gl.css'
+import env from "./settings";
   // eslint-disable-next-line import/no-webpack-loader-syntax
   mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
-import env from "./settings";
+
 
 function App() {
   const myStorage = window.localStorage;
