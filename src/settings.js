@@ -1,7 +1,7 @@
 let getSettings = () => {
     return {
-        
-        api : "https://foodiesplore.herokuapp.com/api"
+        api:"http://localhost:8800/api"
+        // api : "https://foodiesplore.herokuapp.com/api"
     }
 }
 

@@ -31,19 +31,19 @@ function App() {
   });
 
 
-  useEffect(() => {
-    const getPins = async () => {
-      try {
-        const allPins = await axios.get(`${env.api}/pins`);
-        setPins([...allPins.data]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  useEffect(async () => {
+    
     getPins();
   }, []);
 
-
+  const getPins = async () => {
+    try {
+      const allPins = await axios.get(`${env.api}/pins`);
+      setPins([...allPins.data]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleMarkerClick = (id, lat, long) => {
     setcurrPlaceId(id);
@@ -78,11 +78,22 @@ function App() {
     }
   };
 
+const handleDelete = async(id) => {
+  let confirm = window.confirm("By confirming the pin will be deleted permanently! ");
+  if(confirm) {
+    await axios.delete(`${env.api}/pins/delete/${id}`)
+  getPins()}
+  else{
+    window.alert("Something went wrong !")
+  }
+}
+
   const handleLogout = async (e) =>{
     myStorage.removeItem("user");
     setcurrentUser();
   }
 
+  const canDelete = window.localStorage.getItem("user")
   return (
     <div style={{ height: "100vh", width: "100%" }}>
       <ReactMapGL
@@ -138,6 +149,8 @@ function App() {
                   </span>
                   <span className="date">{format(p.createdAt)}</span>
                 </div>
+                {canDelete && (<button onClick={()=>handleDelete(p._id)}>Delete</button>) }
+                
               </Popup>
             )}
           </>
